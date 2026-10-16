@@ -18,9 +18,8 @@ the board powers the sensor.
 
 - Arduino-ESP32 core **3.x** (the `ETH.begin` signature differs from 2.x).
 - Board: **OLIMEX ESP32-PoE**, with **PSRAM enabled**.
-- Open `tf02_http/tf02_http.ino` and upload. The sketch also supports the
-  original ESP32-PoE and the WT32-ETH01; select one with the `BOARD_*` define at
-  the top.
+- Open `tf02_http/tf02_http.ino` and upload. The Ethernet settings match
+  Olimex's own [ESP32-POE2 example](https://github.com/OLIMEX/ESP32-POE2/tree/main/SOFTWARE/ARDUINO/LAN8720-POE2).
 
 At boot the firmware sets the sensor to 20 Hz and saves the setting.
 

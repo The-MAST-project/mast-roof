@@ -7,39 +7,18 @@
 #include <ETH.h>
 #include <WebServer.h>
 
-// ---------- pick your board ----------
-#define BOARD_OLIMEX_ESP32_POE2
-// #define BOARD_OLIMEX_ESP32_POE
-// #define BOARD_WT32_ETH01
-
-#if defined(BOARD_OLIMEX_ESP32_POE2)
-  // WROVER module: GPIO16/17 belong to PSRAM, so the Ethernet clock is on GPIO0.
-  // Arduino IDE: board "OLIMEX ESP32-PoE", PSRAM enabled.
-  // TF02-Pro power: 12V header output (jumper set to 12V), GND common.
-  #define PHY_ADDR   0
-  #define PHY_POWER  12
-  #define PHY_MDC    23
-  #define PHY_MDIO   18
-  #define PHY_CLK    ETH_CLOCK_GPIO0_OUT
-  #define TF_RX_PIN  36   // input-only pin, fine for RX
-  #define TF_TX_PIN  4
-#elif defined(BOARD_OLIMEX_ESP32_POE)
-  #define PHY_ADDR   0
-  #define PHY_POWER  12
-  #define PHY_MDC    23
-  #define PHY_MDIO   18
-  #define PHY_CLK    ETH_CLOCK_GPIO17_OUT
-  #define TF_RX_PIN  36   // input-only pin, fine for RX
-  #define TF_TX_PIN  4
-#elif defined(BOARD_WT32_ETH01)
-  #define PHY_ADDR   1
-  #define PHY_POWER  16
-  #define PHY_MDC    23
-  #define PHY_MDIO   18
-  #define PHY_CLK    ETH_CLOCK_GPIO0_IN
-  #define TF_RX_PIN  5    // labelled RXD on the header
-  #define TF_TX_PIN  17   // labelled TXD on the header
-#endif
+// ---------- Olimex ESP32-POE2 ----------
+// WROVER module: GPIO16/17 belong to PSRAM, so the Ethernet clock is on GPIO0.
+// Arduino IDE: board "OLIMEX ESP32-PoE", PSRAM enabled.
+// Ethernet settings match Olimex's LAN8720-POE2 example (LAN8710A PHY).
+// TF02-Pro power: 12V header output (jumper set to 12V); data on UEXT.
+#define PHY_ADDR   0
+#define PHY_POWER  12
+#define PHY_MDC    23
+#define PHY_MDIO   18
+#define PHY_CLK    ETH_CLOCK_GPIO0_OUT
+#define TF_RX_PIN  36   // UEXT pin 4, input-only, via Schottky + 10k pull-up
+#define TF_TX_PIN  4    // UEXT pin 3
 
 // ---------- sensor settings ----------
 #define TF_BAUD        115200

@@ -45,7 +45,7 @@ Check the revision printed on your board.
 |-----|------------------|-----|---------------------|
 | 1   | +3.3V            | 2   | GND                 |
 | 3   | GPIO4 / U1TXD    | 4   | GPIO36 / U1RXD (via diode) |
-| 5   | GPIO16 / I2C-SCL | 6   | GPIO13 / I2C-SDA    |
+| 5   | GPIO33 / I2C-SCL | 6   | GPIO13 / I2C-SDA    |
 | 7   | GPIO15           | 8   | GPIO2               |
 | 9   | GPIO14           | 10  | GPIO5               |
 
@@ -56,9 +56,10 @@ high. That works for the TF02-Pro's 3.3 V output at 115200 baud: a low reads
 about 0.4–0.5 V (under the ESP32's ~0.8 V threshold), and the line rises in
 about 0.1 µs against an 8.7 µs bit time.
 
-UEXT pin 5 is labelled GPIO16 / I2C-SCL, but GPIO16 is used by PSRAM on the
-WROVER module. It's unused here; don't use UEXT I2C on this board without
-checking.
+UEXT pin 5 is GPIO33. The schematic net is still named "GPIO16\I2C-SCL" from
+the original ESP32-POE, but on the POE2 it reaches GPIO33 through R19 (10 Ω),
+because GPIO16 belongs to the WROVER's PSRAM. Olimex's ESPHome config for the
+POE2 also uses GPIO33 for UEXT SCL.
 
 ## Cautions
 
