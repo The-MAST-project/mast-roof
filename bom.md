@@ -21,11 +21,11 @@ pricing (and import duties) before ordering.
 
 | # | Supplier | Part number | Price | Alternative |
 |---|----------|-------------|-------|-------------|
-| 1 | [Mouser](https://www.mouser.com/c/?m=Benewake) | 234-TF02PROUART | ~US$122 | [Botland](https://botland.store/brand/285-benewake) (EU), €94 |
+| 1 | [Mouser](https://www.mouser.co.il/c/?m=Benewake) | 234-TF02PROUART | ~€76 (Mouser EU sites) | [Botland](https://botland.store/brand/285-benewake) (EU), €94 |
 | 2 | [Olimex](https://www.olimex.com/Products/IoT/ESP32/ESP32-POE2/open-source-hardware) | ESP32-POE2 | €20.95 (€18.86 @ 10+) | [The Pi Hut](https://thepihut.com/products/olimex-esp32-poe2-iot-board) (UK), £22.90 |
-| 3 | Any electronics/networking retailer | e.g. TP-Link TL-POE150S | — | Any true 802.3af/at injector or PoE switch port |
+| 3 | [Mouser](https://www.mouser.co.il/c/?m=Phihong) | 552-POE16R-1AFG6-2-R (Phihong POE16R-1AFG6-2-R, 802.3af, 15.4 W, 56 V) | — | Any true 802.3af/at injector or PoE switch port, e.g. TP-Link TL-POE150S |
 | 4 | [Olimex](https://www.olimex.com/Products/Components/Cables/) | Ethernet-CABLE-1M | €2.00 | Local, for longer runs |
-| 5 | [RS](https://uk.rs-online.com/web/p/wire-housings-plugs/1888793) | Molex 51021-0400; crimps [Molex 50079-8000](https://uk.rs-online.com/web/p/crimp-contacts/6706423) | crimps ~£0.02 ea (100s) | [Farnell](https://cpc.farnell.com/molex/51021-0400/crimp-housing-1-25mm-4way/dp/CN12434) |
+| 5 | [Mouser](https://www.mouser.co.il/c/?m=Molex) | 538-51021-0400; crimps 538-50079-8000 | — | [RS](https://uk.rs-online.com/web/p/wire-housings-plugs/1888793), crimps ~£0.02 ea in 100s |
 | 6a | [Olimex](https://www.olimex.com/Products/Components/Cables/) | CABLE-UEXT-JWF | €3.00 | — |
 | 6b | [Olimex](https://www.olimex.com/Products/Components/Cables/) | JW-200x10-FF | €0.95 (10 pcs) | JW-200x40-FF, €3.00 (40 pcs) |
 | 7 | [Olimex](https://www.olimex.com/Products/IoT/ESP32/ESP32-POE2/open-source-hardware) | BOX-ESP32-POE2 | €10.00 | — |
@@ -37,8 +37,11 @@ pricing (and import duties) before ordering.
 €63 before shipping and VAT (all optional items included). Olimex doesn't
 sell the sensor, a PoE injector or PicoBlade connectors.
 
-**Mouser:** order part 234-TF02PROUART specifically; Mouser also lists an I2C
-variant and the wiper-equipped TF02-Pro-W.
+**Mouser order (mouser.co.il):** items 1, 3 and 5 come from one Mouser order.
+Order 234-TF02PROUART specifically; Mouser also lists an I2C variant and the
+wiper-equipped TF02-Pro-W. The Molex Mouser numbers follow Mouser's usual
+`538-` prefix and the injector's AC plug type weren't confirmed; check both
+when placing the order.
 
 ## Power budget
 
