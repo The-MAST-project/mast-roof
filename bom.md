@@ -7,7 +7,8 @@
 | 3 | 1 | PoE switch or injector, 802.3af/at | Must supply ≥37 V. Passive 24 V injectors won't work. |
 | 4 | 1 | Cat5e/6 Ethernet cable | Length to suit the installation. |
 | 5 | 1 | Molex 51021-0400 housing (1.25 mm, 4-pin) + Molex 50079-8000 crimp terminals | Sensor-side connector. Crimps take 26–28 AWG. May be unnecessary if the sensor ships with a pigtail. |
-| 6 | 1 pack | Female–female jumper wires, 200 mm | Board-header end of the sensor lead; cut and crimp the other end into item 5. Keep the lead under 2 m. |
+| 6a | 1 | Olimex UEXT cable with female jumper wires, 30 cm | Sensor GND, TX and RX from the UEXT connector; crimp the used wires into item 5. See [wiring.md](wiring.md). |
+| 6b | 1 pack | Female–female jumper wires, 200 mm | One wire for +12 V from the EXT PWR header to the sensor's red wire. Keep the whole lead under 2 m. |
 | 7 | 1 | Olimex BOX-ESP32-POE2 plastic enclosure | |
 | 8 | 1 | Olimex DIN-CLIP-ESP32-POE2 *(optional)* | For DIN-rail mounting. |
 | 9 | 1 | USB-A to USB-C cable | For programming on the bench. |
@@ -25,14 +26,15 @@ pricing (and import duties) before ordering.
 | 3 | Any electronics/networking retailer | e.g. TP-Link TL-POE150S | — | Any true 802.3af/at injector or PoE switch port |
 | 4 | [Olimex](https://www.olimex.com/Products/Components/Cables/) | Ethernet-CABLE-1M | €2.00 | Local, for longer runs |
 | 5 | [RS](https://uk.rs-online.com/web/p/wire-housings-plugs/1888793) | Molex 51021-0400; crimps [Molex 50079-8000](https://uk.rs-online.com/web/p/crimp-contacts/6706423) | crimps ~£0.02 ea (100s) | [Farnell](https://cpc.farnell.com/molex/51021-0400/crimp-housing-1-25mm-4way/dp/CN12434) |
-| 6 | [Olimex](https://www.olimex.com/Products/Components/Cables/) | JW-200x10-FF | €0.95 (10 pcs) | JW-200x40-FF, €3.00 (40 pcs) |
+| 6a | [Olimex](https://www.olimex.com/Products/Components/Cables/) | CABLE-UEXT-JWF | €3.00 | — |
+| 6b | [Olimex](https://www.olimex.com/Products/Components/Cables/) | JW-200x10-FF | €0.95 (10 pcs) | JW-200x40-FF, €3.00 (40 pcs) |
 | 7 | [Olimex](https://www.olimex.com/Products/IoT/ESP32/ESP32-POE2/open-source-hardware) | BOX-ESP32-POE2 | €10.00 | — |
 | 8 | [Olimex](https://www.olimex.com/Products/IoT/ESP32/ESP32-POE2/open-source-hardware) | DIN-CLIP-ESP32-POE2 | €5.95 | — |
 | 9 | [Olimex](https://www.olimex.com/Products/Components/Cables/) | USB-CABLE-A-TO-C-1M | €2.40 | Local |
 | 10 | [Olimex](https://www.olimex.com/Products/IoT/ESP32/ESP32-POE2/open-source-hardware) | USB-ISO | €17.95 (USB-ISO-HS €24.95) | [DigiKey](https://www.digikey.fr/en/products/detail/olimex-ltd/USB-ISO/3471376), ~€18 |
 
 **Olimex order:** items 2, 4 and 6–10 come from one Olimex order, about
-€60 before shipping and VAT (all optional items included). Olimex doesn't
+€63 before shipping and VAT (all optional items included). Olimex doesn't
 sell the sensor, a PoE injector or PicoBlade connectors.
 
 **Mouser:** order part 234-TF02PROUART specifically; Mouser also lists an I2C
