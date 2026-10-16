@@ -8,7 +8,11 @@ build/
 .pio/
 
 # Editors / OS
-.vscode/
+.vscode/*
+!.vscode/tasks.json
+!.vscode/c_cpp_properties.json
+!.vscode/extensions.json
+!.vscode/ino-intellisense.ps1
 *.swp
 .DS_Store
 Thumbs.db

@@ -1,0 +1,46 @@
+{
+    // arduino-cli ships inside Arduino IDE 2.x; the board is set in tf02_http/sketch.yaml.
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "type": "process",
+            "command": "${env:LOCALAPPDATA}\\Programs\\arduino-ide\\resources\\app\\lib\\backend\\resources\\arduino-cli.exe",
+            "args": ["compile", "--build-path", "${workspaceFolder}/build", "${workspaceFolder}/tf02_http"],
+            "group": { "kind": "build", "isDefault": true },
+            "problemMatcher": { "base": "$gcc", "fileLocation": "absolute" }
+        },
+        {
+            "label": "Upload",
+            "type": "process",
+            "command": "${env:LOCALAPPDATA}\\Programs\\arduino-ide\\resources\\app\\lib\\backend\\resources\\arduino-cli.exe",
+            "args": ["compile", "--upload", "-p", "${input:port}", "--build-path", "${workspaceFolder}/build", "${workspaceFolder}/tf02_http"],
+            "group": "build",
+            "problemMatcher": { "base": "$gcc", "fileLocation": "absolute" }
+        },
+        {
+            "label": "List serial ports",
+            "type": "process",
+            "command": "${env:LOCALAPPDATA}\\Programs\\arduino-ide\\resources\\app\\lib\\backend\\resources\\arduino-cli.exe",
+            "args": ["board", "list"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Refresh IntelliSense",
+            "type": "process",
+            "command": "powershell",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/.vscode/ino-intellisense.ps1"],
+            "runOptions": { "runOn": "folderOpen" },
+            "presentation": { "reveal": "silent" },
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "port",
+            "type": "promptString",
+            "description": "Serial port of the ESP32-POE2 (see 'List serial ports')",
+            "default": "COM3"
+        }
+    ]
+}
