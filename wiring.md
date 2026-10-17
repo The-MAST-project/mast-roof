@@ -10,7 +10,7 @@ on a separate wire.
 
 ```
 ┌──────────────┐               ┌──────────────────────┐                ┌──────────────────┐
-│  PoE switch  │   Cat5e/6     │  Olimex ESP32-POE2   │                │    TF02-Pro      │
+│  PoE source  │   Cat5e/6     │  Olimex ESP32-POE2   │                │    TF02-Pro      │
 │  802.3af/at  │═══════════════│                      │                │                  │
 │   (≥37 V)    │ data + power  │ EXT PWR 12V ─────────┼────────────────┼── Red    +12 V   │
 └──────────────┘               │                      │                │                  │
@@ -61,12 +61,57 @@ the original ESP32-POE, but on the POE2 it reaches GPIO33 through R19 (10 Ω),
 because GPIO16 belongs to the WROVER's PSRAM. Olimex's ESPHome config for the
 POE2 also uses GPIO33 for UEXT SCL.
 
+## Installation
+
+The PoE injector sits in the network cabinet; Cat6 in the walls carries data
+and power to the mast.
+
+```
+        network cabinet                                         mast
+┌────────┐  patch  ┌───────────────────┐  Cat6 in walls  ┌───────────┐  patch  ┌────────────┐
+│ switch ├─────────┤ DATA IN   PoE OUT ├═════════════════╡ wall jack ╞═════════╡ ESP32-POE2 │
+└────────┘         │   PoE injector    │  data + 48 V    └───────────┘         └────────────┘
+                   └───────────────────┘
+```
+
+- Switch goes to the injector's **data in** port; **PoE out** goes to the
+  wall. Don't swap them.
+- 100 m maximum from switch port to board, patch cords included.
+- The injector must be 802.3af/at with its output isolated from mains (≥1500 V;
+  check the datasheet). The board's ground then floats, so the mast end is the
+  only place it can pick up earth.
+
+### Isolation at the mast
+
+The ESP32-POE2 is not isolated: board ground is at PoE potential. Nothing on
+it may touch anything earthed.
+
+- **Sensor housing:** before mounting, check with a multimeter whether the
+  housing connects to the sensor's black wire. If it does, mount the sensor on
+  an insulating plate with nylon screws.
+- **Board:** keep it in the plastic enclosure. No metal standoffs to a grounded
+  plate; check what a DIN rail is fixed to.
+- **Cable shield:** if the in-wall Cat6 is shielded and bonded in the cabinet,
+  use an unshielded patch cord at the mast end so the shield doesn't reach the
+  board's RJ45.
+- **USB:** never connect a grounded PC while on PoE (use a USB-ISO).
+- **Verify:** after installation, with PoE unplugged, measure between UEXT
+  pin 2 (GND) and the mast structure. It must read open (>1 MΩ). Repeat after
+  any maintenance, and label the enclosure "keep isolated from ground".
+
+### Surge protection
+
+If the cable leaves the building to reach the roof, fit a PoE-rated Ethernet
+surge protector where it exits, bonded to building earth there, not at the
+mast.
+
 ## Cautions
 
 - **Check red/black before power-up.** The TF02-Pro has no polarity or
   over-voltage protection. Don't connect the sensor's red wire to UEXT.
-- The ESP32-POE2 is **not galvanically isolated**: keep the sensor housing
-  floating from telescope/dome ground.
+- The ESP32-POE2 is **not galvanically isolated**: keep the board and sensor
+  housing floating from telescope/dome ground (see
+  [Isolation at the mast](#isolation-at-the-mast)).
 - Don't plug USB in while the board is on PoE; use an Olimex USB-ISO for field
   debugging.
 - The PoE source must be 802.3af/at (≥37 V). Passive 24 V injectors won't work.
